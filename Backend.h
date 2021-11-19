@@ -23,10 +23,21 @@ class snake {
 public:
 private:
 	vector<coordinate> body;
-	int bodysize;
+	int bodySize;
 	coordinate head;
 	enum direction { UP, DOWN, LEFT, RIGHT };
 	direction dir;
+
+	snake(int x, int y) {};
+
+	void move() {};
+	int get_head_x() {
+		return head.x;
+	};
+	int get_head_y() {
+		return head.y;
+	};
+
 };
 
 #endif
