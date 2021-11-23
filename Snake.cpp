@@ -121,6 +121,7 @@ GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
     welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
-
+    
     this->SetSizer(welcomeScreenSizer);
+    
 }
