@@ -69,9 +69,14 @@ GameFrame::GameFrame()
     welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
 
     panel->SetSizer(welcomeScreenSizer);
-
+    //set up when buttons are clicked
+    quit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GameFrame::OnExit ), NULL, this );
+        
     book->ShowNewPage(panel);
 
+}
+GameFrame::~GameFrame(){
+    quit->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GameFrame::OnExit ), NULL, this );
 }
 void GameFrame::OnExit(wxCommandEvent& event)
 {
@@ -109,9 +114,4 @@ GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
     
     this->SetSizer(welcomeScreenSizer);
     
-    //set up when buttons are clicked
-    quit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GameFrame::OnExit ), NULL, this );
-}
-GameFrame::~GameFrame(){
-    quit->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GameFrame::OnExit ), NULL, this );
 }
