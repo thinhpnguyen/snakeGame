@@ -15,6 +15,7 @@ class GameFrame : public wxFrame
 {
 public:
     GameFrame();
+    ~GameFrame();
 protected:
     wxSimplebook* book;
     wxStaticText* gameTitle;
