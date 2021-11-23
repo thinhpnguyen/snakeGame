@@ -112,4 +112,6 @@ GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
     //set up when buttons are clicked
     quit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GameFrame::OnExit ), NULL, this );
 }
-
+GameFrame::~GameFrame(){
+    quit->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GameFrame::OnExit ), NULL, this );
+}
