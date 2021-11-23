@@ -25,5 +25,10 @@ protected:
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void OnStart(wxCommandEvent& event);
+
+private:
+    wxDECLARE_EVENT_TABLE();
+
 };
 

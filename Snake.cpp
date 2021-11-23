@@ -11,8 +11,16 @@ public:
 
 enum
 {
-    ID_Hello = 1
+    ID_Hello,
+    ID_Start_Button
 };
+
+wxBEGIN_EVENT_TABLE(GameFrame, wxFrame)
+
+EVT_BUTTON(ID_Start_Button, GameFrame::OnStart)
+
+wxEND_EVENT_TABLE()
+
 wxIMPLEMENT_APP(MyApp);
 bool MyApp::OnInit()
 {
@@ -56,7 +64,7 @@ GameFrame::GameFrame()
     gameTitle->Wrap(-1);
     gameTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Sans Serif")));
 
-    start = new wxButton(panel, wxID_ANY, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
+    start = new wxButton(panel, ID_Start_Button, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
     leaderBoard = new wxButton(panel, wxID_ANY, wxT("Leader Board"), wxDefaultPosition, wxDefaultSize, 0);
     quit = new wxButton(panel, wxID_ANY, wxT("Quit"), wxDefaultPosition, wxDefaultSize, 0);
     welcomeScreenSizer->AddSpacer(200);
@@ -73,6 +81,13 @@ GameFrame::GameFrame()
     book->ShowNewPage(panel);
 
 }
+
+
+
+void GameFrame::OnStart(wxCommandEvent& event) {
+    book->ShowNewPage(gameScreen);
+}
+
 void GameFrame::OnExit(wxCommandEvent& event)
 {
     Close(true);
