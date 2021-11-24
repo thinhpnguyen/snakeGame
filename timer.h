@@ -3,8 +3,8 @@
 #define _TIMER_H_
 
 #include <wx/timer.h>
-#include "game.h"
-#include "Backend.h"
+
+class Game;
 
     class Timer : public wxTimer {
     private:

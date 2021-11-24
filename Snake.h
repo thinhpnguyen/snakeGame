@@ -7,9 +7,8 @@
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
-#include "game.h"
 
-
+class Game;
 class GamePanel : public wxPanel
 {
 public:

@@ -3,10 +3,10 @@
 #define _GAME_HH_
 
 #include <cstddef>
-#include "Snake.h"
-#include "Backend.h"
 #include "constants.h"
 #include "timer.h"
+#include "Backend.h"
+class GamePanel;
 
     class Game {
     private:

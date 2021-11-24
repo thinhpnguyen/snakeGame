@@ -5,6 +5,7 @@
 #include <wx/dcbuffer.h>
 #include "constants.h"
 #include "Snake.h"
+#include "game.h"
 using namespace std;
 class MyApp : public wxApp
 {
@@ -106,11 +107,11 @@ void GameFrame::OnHello(wxCommandEvent& event)
 }
 
 
-GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID), game(new Game(*this)) {
+GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
     wxSize size(640, 480);
     SetMinSize(size);
     SetMaxSize(size);
-
+    game = new Game(*this);
 }
 
 void GamePanel::drawSnake(wxDC& dc) {

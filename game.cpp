@@ -2,7 +2,7 @@
 #include <config.h>
 #endif
 #include "game.h"
-
+#include "Snake.h"
 
 
 Game::Game(GamePanel& panel) : snake(NULL), panel(panel),
