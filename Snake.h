@@ -1,21 +1,32 @@
 #pragma once
+#ifndef _SNAKE_HH_
+#define _SNAKE_HH_
+
 #include <wx/wxprec.h>
 #include <wx/simplebook.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
+#include "game.h"
+
 
 class GamePanel : public wxPanel
 {
 public:
     GamePanel(wxWindow* parent, int ID);
+private:
+    Game& game;
+    void drawSnake(wxDC& dc);
+    void onPaint(wxPaintEvent& event);
+    void onEraseBackground(wxEraseEvent& event);
+    void onKeyDown(wxKeyEvent& event);
 
 };
 class GameFrame : public wxFrame
 {
 public:
     GameFrame();
-    ~GameFrame();
+    //~GameFrame();
 protected:
     wxSimplebook* book;
     wxStaticText* gameTitle;
@@ -33,3 +44,4 @@ private:
 
 };
 
+#endif

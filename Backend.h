@@ -1,44 +1,36 @@
-//#pragma once
-//
-//#ifndef HEADERFILE_H
-//#define HEADERFILE_H
-//#include <vector>
-//using namespace std;
-//
-//struct coordinate {
-//	int x, y;
-//	coordinate() {};
-//	coordinate(int a, int b) :x(a), y(b) {};
-//	bool operator== (const coordinate& other) const {
-//		if ((other.x == x) && (other.y == y) ){
-//			return true;
-//		}
-//		else {
-//			return false;
-//		}
-//	}
-//};
-//
-//class snake {
-//public:
-//private:
-//	vector<coordinate> body;
-//	int bodySize;
-//	coordinate head;
-//	enum direction { UP, DOWN, LEFT, RIGHT };
-//	direction dir;
-//
-//	snake(int x, int y) {};
-//
-//	void move() {};
-//	int get_head_x() {
-//		return head.x;
-//	};
-//	int get_head_y() {
-//		return head.y;
-//	};
-//
-//};
-//
-//#endif
-//
+#pragma once
+
+#ifndef BACKEND_H
+#define BACKEND_H
+#include <vector>
+#include <wx/gdicmn.h>
+#include "constants.h"
+using namespace std;
+
+
+
+
+class Snake {
+public:
+	Snake();
+	void setDirection(enum Direction direction);
+	const std::vector<wxPoint>& getBody() const;
+	const wxPoint& getHead() const;
+	void addBody(const wxPoint& bodyPart);
+	enum Direction getDirection() const;
+	bool isAlive() const;
+	void setALive(bool alive);
+	void move();
+
+private:
+	vector<wxPoint> body;
+	int bodySize;
+	wxPoint head;
+	Direction dir;
+	bool alive;
+
+};
+
+
+#endif
+

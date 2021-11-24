@@ -1,8 +1,11 @@
 // wxWidgets "Hello World" Program
 // For compilers that support precompilation, includes "wx/wx.h".
-#include "Snake.h"
+#include <vector>
 #include <wx/simplebook.h>
-
+#include <wx/dcbuffer.h>
+#include "constants.h"
+#include "Snake.h"
+using namespace std;
 class MyApp : public wxApp
 {
 public:
@@ -103,25 +106,68 @@ void GameFrame::OnHello(wxCommandEvent& event)
 }
 
 
-GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
-    wxSizer* welcomeScreenSizer = new wxBoxSizer(wxVERTICAL);
+GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID), game(new Game(*this)) {
+    wxSize size(640, 480);
+    SetMinSize(size);
+    SetMaxSize(size);
 
-    wxStaticText* gameTitle = new wxStaticText(this, wxID_ANY, wxT("Game Screen"), wxPoint(10, 10), wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
-    gameTitle->Wrap(-1);
-    gameTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Sans Serif")));
+}
 
-    wxButton* start = new wxButton(this, wxID_ANY, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
-    wxButton* leaderBoard = new wxButton(this, wxID_ANY, wxT("Leader Board"), wxDefaultPosition, wxDefaultSize, 0);
-    wxButton* quit = new wxButton(this, wxID_ANY, wxT("Quit"), wxDefaultPosition, wxDefaultSize, 0);
-    welcomeScreenSizer->AddSpacer(200);
-    welcomeScreenSizer->Add(gameTitle, 0, wxALIGN_CENTER, 0);
-    welcomeScreenSizer->AddSpacer(20);
-    welcomeScreenSizer->Add(start, 0, wxALIGN_CENTER, 0);
-    welcomeScreenSizer->AddSpacer(20);
-    welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
-    welcomeScreenSizer->AddSpacer(20);
-    welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
-    
-    this->SetSizer(welcomeScreenSizer);
-    
+void GamePanel::drawSnake(wxDC& dc) {
+    int BLOCK_SIZE = 16;
+    const std::vector<wxPoint>& body = game.getSnake().getBody();
+    const wxPoint& head = game.getSnake().getHead();
+    dc.SetPen(*wxGREEN_PEN);
+    dc.SetBrush(*wxBLUE_BRUSH);
+    // draw the head
+    dc.DrawRectangle(head.x, head.y, BLOCK_SIZE, BLOCK_SIZE);
+
+    //draw the body
+    dc.SetPen(*wxGREY_PEN);
+    dc.SetBrush(*wxGREEN_BRUSH);
+
+    for (unsigned int i = 0; i < body.size(); i++) {
+        dc.DrawRectangle(body[i].x, body[i].y, BLOCK_SIZE, BLOCK_SIZE);
+    }
+}
+
+void GamePanel::onKeyDown(wxKeyEvent& event) {
+    switch (event.m_keyCode) {
+    case WXK_PAUSE:
+        // (un)pause the game
+        game.togglePause();
+        break;
+    case WXK_UP:
+        // up arrow = north
+        if (game.getSnake().getDirection() != DOWN) {
+            game.changeDirection(UP);
+        }
+
+        break;
+    case WXK_RIGHT:
+        // right arrow = west
+        if (game.getSnake().getDirection() != LEFT) {
+            game.changeDirection(RIGHT);
+        }
+
+        break;
+    case WXK_DOWN:
+        // down arrow = south
+        if (game.getSnake().getDirection() != UP) {
+            game.changeDirection(DOWN);
+        }
+
+        break;
+    case WXK_LEFT:
+        // left arrow = west
+        if (game.getSnake().getDirection() != RIGHT) {
+            game.changeDirection(LEFT);
+        }
+
+        break;
+    default:
+        // allow other handlers to process KEY_DOWN events
+        event.Skip();
+        break;
+    }
 }
