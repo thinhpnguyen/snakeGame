@@ -16,6 +16,8 @@ namespace SnakeGame {
         Timer* timer;
         GamePanel& panel;
         bool playing, paused;
+        void moveApple();
+        bool isOccupied(const wxPoint &point, bool checkHead = false) const;
 
     public:
         /**
@@ -79,7 +81,7 @@ namespace SnakeGame {
 
     inline const Snake& Game::getSnake() const { return *snake; }
     inline bool Game::isPlaying() const { return playing; }
-
+    inline const wxPoint &Game::getApple() const { return apple; }
 }
 #endif
 
