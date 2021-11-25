@@ -39,7 +39,7 @@ wxIMPLEMENT_APP(MyApp);
 bool MyApp::OnInit()
 {
     GameFrame* frame = new GameFrame();
-    frame->SetClientSize(640, 880);
+    frame->SetClientSize(PANEL_WIDTH, PANEL_HEIGHT);
     frame->Centre();
     frame->Show(true);
     return true;
@@ -121,7 +121,7 @@ void GameFrame::OnHello(wxCommandEvent& event)
 
 
 GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID), game(Game(*this)){
-    wxSize size(640, 480);
+    wxSize size(PANEL_WIDTH, PANEL_HEIGHT);
     SetMinSize(size);
     SetMaxSize(size);
 }
@@ -136,6 +136,7 @@ void GamePanel::onPaint(wxPaintEvent&) {
     if (game.isPlaying()) {
         // draw the snake
         drawSnake(dc);
+        drawApple(dc);
     }
 }
 
@@ -164,11 +165,21 @@ void GamePanel::drawSnake(wxDC& dc) {
     dc.SetBrush(*wxBLUE_BRUSH);
 
     dc.DrawRectangle(body[0].x, body[0].y, BLOCK_SIZE, BLOCK_SIZE);
-
-
-    
+   
 }
+void GamePanel::drawApple(wxDC &dc) {
+    // draw the apple
+    dc.SetPen(*wxRED_PEN);
+    dc.SetBrush(*wxYELLOW_BRUSH);
 
+    int radius = BLOCK_SIZE / 2;
+
+    wxPoint apple = game.getApple();
+    apple.x += radius;
+    apple.y += radius;
+
+    dc.DrawCircle(apple.x,apple.y, radius);
+}
 void GamePanel::onKeyDown(wxKeyEvent& event) {
     switch (event.m_keyCode) {
     case WXK_PAUSE:
