@@ -20,6 +20,7 @@ namespace SnakeGame {
     private:
         Game game;
         void drawSnake(wxDC& dc);
+        void drawApple(wxDC &dc);
         void onPaint(wxPaintEvent& event);
         void onEraseBackground(wxEraseEvent& event);
         void onKeyDown(wxKeyEvent& event);
