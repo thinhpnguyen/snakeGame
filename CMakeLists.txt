@@ -8,8 +8,7 @@ set(wxWidgets_CONFIGURATION mswu)
 find_package(wxWidgets COMPONENTS core base REQUIRED)
 include(${wxWidgets_USE_FILE})
 
-add_executable(snakeGame Backend.h Backend.cpp Snake.h Snake.cpp)
-#add_executable(test Backend.h Backend.cpp)
+add_executable(snakeGame Backend.h Backend.cpp Snake.h Snake.cpp game.h game.cpp timer.h timer.cpp constants.h)
 target_link_libraries(snakeGame ${wxWidgets_LIBRARIES})
 
 #set(CMAKE_CXX_STANDARD 14)
