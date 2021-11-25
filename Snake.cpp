@@ -23,6 +23,12 @@ enum
     ID_Start_Button
 };
 
+BEGIN_EVENT_TABLE(GamePanel, wxPanel)
+    EVT_PAINT(GamePanel::onPaint)
+    EVT_ERASE_BACKGROUND(GamePanel::onEraseBackground)
+    EVT_KEY_DOWN(GamePanel::onKeyDown)
+END_EVENT_TABLE()
+
 wxBEGIN_EVENT_TABLE(GameFrame, wxFrame)
 
 EVT_BUTTON(ID_Start_Button, GameFrame::OnStart)
@@ -96,6 +102,7 @@ GameFrame::GameFrame()
 
 void GameFrame::OnStart(wxCommandEvent& event) {
     book->ShowNewPage(gameScreen);
+    gameScreen->newGame();
 }
 
 void GameFrame::OnExit(wxCommandEvent& event)
@@ -109,7 +116,7 @@ void GameFrame::OnAbout(wxCommandEvent& event)
 }
 void GameFrame::OnHello(wxCommandEvent& event)
 {
-    book->ShowNewPage(gameScreen);
+    gameScreen->newGame();
 }
 
 
@@ -117,9 +124,8 @@ GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID), game(Game(
     wxSize size(640, 480);
     SetMinSize(size);
     SetMaxSize(size);
-
-
 }
+
 void GamePanel::onPaint(wxPaintEvent&) {
     wxBufferedPaintDC dc(this);
 
@@ -142,21 +148,25 @@ void GamePanel::newGame() {
 }
 
 void GamePanel::drawSnake(wxDC& dc) {
-    int BLOCK_SIZE = 16;
     const std::vector<wxPoint>& body = game.getSnake().getBody();
-    const wxPoint& head = game.getSnake().getHead();
-    dc.SetPen(*wxGREEN_PEN);
-    dc.SetBrush(*wxBLUE_BRUSH);
-    // draw the head
-    dc.DrawRectangle(head.x, head.y, BLOCK_SIZE, BLOCK_SIZE);
+    //const wxPoint& head = game.getSnake().getHead();
 
     //draw the body
     dc.SetPen(*wxGREY_PEN);
     dc.SetBrush(*wxGREEN_BRUSH);
 
-    for (unsigned int i = 0; i < body.size(); i++) {
+    for (unsigned int i = 1; i < body.size(); i++) {
         dc.DrawRectangle(body[i].x, body[i].y, BLOCK_SIZE, BLOCK_SIZE);
     }
+
+    // draw the head
+    dc.SetPen(*wxGREEN_PEN);
+    dc.SetBrush(*wxBLUE_BRUSH);
+
+    dc.DrawRectangle(body[0].x, body[0].y, BLOCK_SIZE, BLOCK_SIZE);
+
+
+    
 }
 
 void GamePanel::onKeyDown(wxKeyEvent& event) {

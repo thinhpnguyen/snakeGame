@@ -22,15 +22,6 @@ Game::~Game() {
     // delete the Timer
     delete timer;
 }
-
-void Game::start() {
-    // end the current Game
-    end();
-
-    // now we are playing
-    playing = true;
-}
-
 void Game::end() {
     // if we are playing
     if (playing) {
@@ -40,14 +31,24 @@ void Game::end() {
         // stop the Timer
         timer->Stop();
 
-        // remove the Snake
+        // remove the snake
         delete snake;
     }
 }
+void Game::start() {
+    // end the current Game
+    end();
+
+    snake = new Snake();
+    // now we are playing
+    playing = true;
+}
+
 
 void Game::changeDirection(enum Direction direction) {
     snake->setDirection(direction);
 }
+
 
 void Game::togglePause() {
     // toggle pause value

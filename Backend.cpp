@@ -7,11 +7,11 @@ Snake::Snake(): dir(RIGHT), alive(true), bodySize(3) {
     // center the Snake vertically in the middle of the screen
     wxPoint point((640 / 2) - BLOCK_SIZE, (480 / 2) - (2 * BLOCK_SIZE));
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         body.push_back(point);
         point.x += BLOCK_SIZE;
     }
-    head = point;
+
 }
 
 
@@ -24,15 +24,15 @@ void Snake::move() {
 
     // move the head in the current direction
     if (dir == UP) {
-        head.y -= BLOCK_SIZE;
+        body[0].y -= BLOCK_SIZE;
     }
     else if (dir == RIGHT) {
-        head.x += BLOCK_SIZE;
+        body[0].x += BLOCK_SIZE;
     }
     else if (dir == DOWN) {
-        head.y += BLOCK_SIZE;
+        body[0].y += BLOCK_SIZE;
     }
     else {
-        head.x -= BLOCK_SIZE;
+        body[0].x -= BLOCK_SIZE;
     }
 }

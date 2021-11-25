@@ -10,6 +10,7 @@
 #include "game.h"
 
 namespace SnakeGame {
+
     class GamePanel : public wxPanel
     {
     public:
@@ -22,6 +23,7 @@ namespace SnakeGame {
         void onPaint(wxPaintEvent& event);
         void onEraseBackground(wxEraseEvent& event);
         void onKeyDown(wxKeyEvent& event);
+        DECLARE_EVENT_TABLE()
 
     };
     inline void GamePanel::onEraseBackground(wxEraseEvent&) {}

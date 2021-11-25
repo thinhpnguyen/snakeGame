@@ -15,7 +15,7 @@ namespace SnakeGame {
 		Snake();
 		void setDirection(enum Direction direction);
 		const std::vector<wxPoint>& getBody() const;
-		const wxPoint& getHead() const;
+		//const wxPoint& getHead() const;
 		void addBody(const wxPoint& bodyPart);
 		enum Direction getDirection() const;
 		bool isAlive() const;
@@ -25,7 +25,7 @@ namespace SnakeGame {
 	private:
 		vector<wxPoint> body;
 		int bodySize;
-		wxPoint head;
+		//wxPoint head;
 		Direction dir;
 		bool alive;
 
@@ -37,7 +37,7 @@ namespace SnakeGame {
 	inline void Snake::setDirection(enum Direction direction) { this->dir = direction; };
 	inline bool Snake::isAlive() const { return alive; };
 	inline void Snake::setALive(bool alive) { this->alive = alive; };
-	inline const wxPoint& Snake::getHead() const { return head; };
+	//inline const wxPoint& Snake::getHead() const { return head; };
 }
 
 #endif
