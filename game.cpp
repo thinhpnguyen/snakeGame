@@ -100,7 +100,7 @@ void Game::tick() {
     snake->move();
 
     // did the snake eat the apple?
-    if (snake->getSegments()[0] == apple) {
+    if (snake->getBody()[0] == apple) {
         // randomize the apple position
         moveApple();
 
