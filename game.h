@@ -12,6 +12,7 @@ namespace SnakeGame {
 
     class Game {
     private:
+        wxPoint apple;
         Snake* snake;
         Timer* timer;
         GamePanel& panel;
