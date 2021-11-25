@@ -39,10 +39,12 @@ namespace SnakeGame {
          * @return The Snake.
          */
         const Snake& getSnake() const;
-
-
-
-
+        /**
+         * Gets the apple position.
+         *
+         * @return The apple position.
+         */
+        const wxPoint &getApple() const;
         /**
          * Queries if this Game is being played.
          *
