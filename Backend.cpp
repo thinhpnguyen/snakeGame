@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 #include "backend.h"
 using namespace SnakeGame;
-=======
-#include "Backend.h"
 
->>>>>>> e102561c7f9a094c2ae6acafee37baedb17eb89f
 
 
 Snake::Snake(): dir(RIGHT), alive(true), bodySize(3) {
