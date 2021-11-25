@@ -83,9 +83,11 @@ GameFrame::GameFrame()
     welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
-
+    
     panel->SetSizer(welcomeScreenSizer);
-
+    // connect quit button
+    quit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GameFrame::OnExit ), NULL, this );
+        
     book->ShowNewPage(panel);
 
 }
