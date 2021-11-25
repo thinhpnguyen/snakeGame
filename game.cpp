@@ -99,6 +99,15 @@ void Game::tick() {
     // move the Snake
     snake->move();
 
+    // did the snake eat the apple?
+    if (snake->getSegments()[0] == apple) {
+        // randomize the apple position
+        moveApple();
+
+        // grow the snake
+        snake->addSegment(3);
+    }
+
     // refresh the panel
     panel.Refresh();
 }

@@ -17,6 +17,7 @@ namespace SnakeGame {
 		const std::vector<wxPoint>& getBody() const;
 		//const wxPoint& getHead() const;
 		void addBody(const wxPoint& bodyPart);
+		void addSegment(int count = 1);
 		enum Direction getDirection() const;
 		bool isAlive() const;
 		void setALive(bool alive);

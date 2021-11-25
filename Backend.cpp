@@ -13,7 +13,15 @@ Snake::Snake(): dir(LEFT), alive(true), bodySize(3) {
     }
 
 }
+void Snake::addSegment(int count) {
+    // get the last part of the Snake
+    wxPoint &body_temp = body[body.size() - 1];
 
+    // clone it
+    for (int i = 0; i < count; i++) {
+    	body.push_back(body_temp);
+    }
+}
 
 void Snake::move() {
     // move the body towards the head
