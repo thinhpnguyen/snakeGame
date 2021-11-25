@@ -41,6 +41,7 @@ void Game::start() {
     timer->Start(500);
     snake = new Snake();
     // now we are playing
+    moveApple();
     playing = true;
 }
 
@@ -63,7 +64,37 @@ void Game::togglePause() {
         timer->Start(-1);
     }
 }
+void Game::moveApple() {
+    for (;;) {
+        // find a random spot for the apple
+        apple.x = (rand() / ((RAND_MAX / (PANEL_WIDTH / BLOCK_SIZE)) + 1)) * BLOCK_SIZE;
+        apple.y = (rand() / ((RAND_MAX / (PANEL_HEIGHT / BLOCK_SIZE)) + 1)) * BLOCK_SIZE;
 
+        if (!isOccupied(apple, true)) {
+            // if we found a free spot, we're done
+            break;
+        }
+
+        // otherwise we have to keep looking
+    }
+}
+bool Game::isOccupied(const wxPoint &point, bool checkHead) const {
+    int start = (checkHead ? 0 : 1);
+
+    // is the point occupied by the Snake
+    for (unsigned int i = start; i < snake->getBody().size(); i++) {
+        if (point == snake->getBody()[i]) {
+            return true;
+        }
+    }
+
+    // is the point occupied by a Wall?
+//    if (level.isWall(point)) {
+//        return true;
+//    }
+
+    return false;
+}
 void Game::tick() {
     // move the Snake
     snake->move();
