@@ -176,28 +176,28 @@ void GamePanel::onKeyDown(wxKeyEvent& event) {
         game.togglePause();
         break;
     case WXK_UP:
-        // up arrow = north
+        // up arrow = up
         if (game.getSnake().getDirection() != DOWN) {
             game.changeDirection(UP);
         }
 
         break;
     case WXK_RIGHT:
-        // right arrow = west
+        // right arrow = right
         if (game.getSnake().getDirection() != LEFT) {
             game.changeDirection(RIGHT);
         }
 
         break;
     case WXK_DOWN:
-        // down arrow = south
+        // down arrow = down
         if (game.getSnake().getDirection() != UP) {
             game.changeDirection(DOWN);
         }
 
         break;
     case WXK_LEFT:
-        // left arrow = west
+        // left arrow = left
         if (game.getSnake().getDirection() != RIGHT) {
             game.changeDirection(LEFT);
         }

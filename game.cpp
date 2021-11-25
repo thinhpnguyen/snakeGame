@@ -38,7 +38,7 @@ void Game::end() {
 void Game::start() {
     // end the current Game
     end();
-
+    timer->Start(500);
     snake = new Snake();
     // now we are playing
     playing = true;
