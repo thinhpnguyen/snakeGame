@@ -60,7 +60,7 @@ void Game::togglePause() {
     }
     else {
         // (re)start the timer
-        timer->Start(10);
+        timer->Start(-1);
     }
 }
 
