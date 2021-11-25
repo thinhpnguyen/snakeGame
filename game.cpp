@@ -105,7 +105,7 @@ void Game::tick() {
         moveApple();
 
         // grow the snake
-        snake->addSegment(3);
+        snake->addSegment(1);
     }
 
     // refresh the panel
