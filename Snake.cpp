@@ -5,8 +5,12 @@
 #include <wx/dcbuffer.h>
 #include "constants.h"
 #include "Snake.h"
-#include "game.h"
+#include "Backend.h"
+
 using namespace std;
+using namespace SnakeGame;
+
+
 class MyApp : public wxApp
 {
 public:
@@ -107,11 +111,32 @@ void GameFrame::OnHello(wxCommandEvent& event)
 }
 
 
-GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID) {
+GamePanel::GamePanel(wxWindow* parent, int ID) : wxPanel(parent, ID), game(Game(*this)){
     wxSize size(640, 480);
     SetMinSize(size);
     SetMaxSize(size);
-    game = new Game(*this);
+
+
+}
+void GamePanel::onPaint(wxPaintEvent&) {
+    wxBufferedPaintDC dc(this);
+
+    // clear the background
+    dc.SetBackground(*wxGREY_BRUSH);
+    dc.Clear();
+
+    if (game.isPlaying()) {
+        // draw the snake
+        drawSnake(dc);
+    }
+}
+
+void GamePanel::newGame() {
+    // start a 'novice' difficulty level game
+    game.start();
+
+    // refresh the screen
+    Refresh();
 }
 
 void GamePanel::drawSnake(wxDC& dc) {

@@ -3,9 +3,13 @@
 #endif
 #include "game.h"
 #include "Snake.h"
+#include "timer.h"
+#include "Backend.h"
+
+using namespace SnakeGame;
 
 
-Game::Game(GamePanel& panel) : snake(NULL), panel(panel),
+Game::Game(GamePanel & panel) : snake(NULL), panel(panel),
 playing(false), paused(true) {
     // create the game Timer
     timer = new Timer(*this);

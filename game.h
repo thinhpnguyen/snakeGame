@@ -4,9 +4,11 @@
 
 #include <cstddef>
 #include "constants.h"
-#include "timer.h"
-#include "Backend.h"
-class GamePanel;
+
+namespace SnakeGame {
+    class Timer;
+    class GamePanel;
+    class Snake;
 
     class Game {
     private:
@@ -68,7 +70,7 @@ class GamePanel;
          * Toggles whether the Game is paused or not.
          */
         void togglePause();
-    
+
         /**
          * Called when the timer goes off.
          */
@@ -78,6 +80,6 @@ class GamePanel;
     inline const Snake& Game::getSnake() const { return *snake; }
     inline bool Game::isPlaying() const { return playing; }
 
-
+}
 #endif
 

@@ -1,5 +1,5 @@
 #include "backend.h"
-
+using namespace SnakeGame;
 
 
 Snake::Snake(): dir(RIGHT), alive(true), bodySize(3) {
@@ -13,13 +13,6 @@ Snake::Snake(): dir(RIGHT), alive(true), bodySize(3) {
     head = point;
 }
 
-inline const std::vector<wxPoint>& Snake::getBody() const { return body; };
-inline void Snake::addBody(const wxPoint& bodyPart) { body.push_back(bodyPart); };
-inline enum Direction Snake::getDirection() const { return dir; };
-inline void Snake::setDirection(enum Direction direction) { this->dir = direction; };
-inline bool Snake::isAlive() const { return alive; };
-inline void Snake::setALive(bool alive) { this->alive = alive; };
-inline const wxPoint& Snake::getHead() const { return head; };
 
 void Snake::move() {
     // move the body towards the head
