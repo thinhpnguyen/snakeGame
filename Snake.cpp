@@ -170,34 +170,34 @@ void GamePanel::drawSnake(wxDC& dc) {
 }
 
 void GamePanel::onKeyDown(wxKeyEvent& event) {
-    if (event.GetKeyCode() == WXK_PAUSE) {
+    switch (event.m_keyCode) {
+    case WXK_PAUSE:
+        // (un)pause the game
         game.togglePause();
-        return;
-    }
-    switch (event.GetUnicodeKey()) {
-    case 'I':
-        // I key = up
+        break;
+    case WXK_UP:
+        // up arrow = up
         if (game.getSnake().getDirection() != DOWN) {
             game.changeDirection(UP);
         }
 
         break;
-    case 'L':
-        // L key = right
+    case WXK_RIGHT:
+        // right arrow = right
         if (game.getSnake().getDirection() != LEFT) {
             game.changeDirection(RIGHT);
         }
 
         break;
-    case'K':
-        // K key = down
+    case WXK_DOWN:
+        // down arrow = down
         if (game.getSnake().getDirection() != UP) {
             game.changeDirection(DOWN);
         }
 
         break;
-    case 'J':
-        // J key = left
+    case WXK_LEFT:
+        // left arrow = left
         if (game.getSnake().getDirection() != RIGHT) {
             game.changeDirection(LEFT);
         }
