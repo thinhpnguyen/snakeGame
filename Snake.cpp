@@ -50,6 +50,8 @@ GameFrame::GameFrame()
         wxMINIMIZE_BOX | wxCLOSE_BOX)
 {
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+    // set background color
+    this->SetBackgroundColour(wxColour( 67, 112, 115));
     wxMenu* menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
         "Help string shown in status bar for this menu item");
