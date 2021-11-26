@@ -99,6 +99,11 @@ void Game::tick() {
     // move the Snake
     snake->move();
 
+    // did the snake crash?
+    if (isOccupied(snake->getBody()[0])) {
+        snake->setALive(false);
+    }
+
     // did the snake eat the apple?
     if (snake->getBody()[0] == apple) {
         // randomize the apple position

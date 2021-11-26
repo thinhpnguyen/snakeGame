@@ -139,6 +139,12 @@ void GamePanel::onPaint(wxPaintEvent&) {
         // draw the snake
         drawSnake(dc);
         drawApple(dc);
+        if (!game.getSnake().isAlive()){
+        	game.togglePause();
+        	game.end();
+        	Refresh();
+        	game.start();
+        }
     }
 }
 
