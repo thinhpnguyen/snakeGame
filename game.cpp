@@ -88,6 +88,14 @@ bool Game::isOccupied(const wxPoint &point, bool checkHead) const {
         }
     }
 
+    if ((point.x > PANEL_WIDTH - BLOCK_SIZE) || (point.x < 0)) {
+        return true;
+    }
+
+    if ((point.y > PANEL_HEIGHT - BLOCK_SIZE) || (point.y < 0)) {
+        return true;
+    }
+
     // is the point occupied by a Wall?
 //    if (level.isWall(point)) {
 //        return true;
