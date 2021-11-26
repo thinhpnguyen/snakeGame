@@ -18,8 +18,8 @@ namespace SnakeGame {
         GamePanel& panel;
         bool playing, paused;
         void moveApple();
-        bool isOccupied(const wxPoint &point, bool checkHead = false) const;
-
+        bool isOccupied(const wxPoint& point, bool checkHead = false) const;
+        int score;
     public:
         /**
          * Creates a new Game.
@@ -32,7 +32,12 @@ namespace SnakeGame {
          * Destructs this Game.
          */
         ~Game();
-
+        /**
+        * Gets this Game's Snake.
+        *
+        * @return The Snake.
+        */
+        const int getScore() const;
         /**
          * Gets this Game's Snake.
          *
@@ -44,7 +49,7 @@ namespace SnakeGame {
          *
          * @return The apple position.
          */
-        const wxPoint &getApple() const;
+        const wxPoint& getApple() const;
         /**
          * Queries if this Game is being played.
          *
@@ -84,7 +89,9 @@ namespace SnakeGame {
 
     inline const Snake& Game::getSnake() const { return *snake; }
     inline bool Game::isPlaying() const { return playing; }
-    inline const wxPoint &Game::getApple() const { return apple; }
+    inline const wxPoint& Game::getApple() const { return apple; }
+    inline const int Game::getScore() const {return score;}
+
 }
 #endif
 

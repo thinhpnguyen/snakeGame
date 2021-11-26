@@ -10,7 +10,7 @@ using namespace SnakeGame;
 
 
 Game::Game(GamePanel & panel) : snake(NULL), panel(panel),
-playing(false), paused(true) {
+playing(false), paused(true), score(0) {
     // create the game Timer
     timer = new Timer(*this);
 }
@@ -119,6 +119,7 @@ void Game::tick() {
 
         // grow the snake
         snake->addSegment(1);
+        score++;
     }
 
     // refresh the panel

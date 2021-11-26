@@ -142,6 +142,9 @@ void GamePanel::onPaint(wxPaintEvent&) {
         if (!game.getSnake().isAlive()){
         	//game.togglePause();
         	game.end();
+            wxString scoreMessage;
+            scoreMessage.Printf(wxT("You Died!\nYour Score Is: %d."), game.getScore());
+            wxMessageBox(scoreMessage);
         	Refresh();
         	game.start();
         }
