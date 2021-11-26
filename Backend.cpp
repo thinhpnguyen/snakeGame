@@ -5,7 +5,7 @@ using namespace SnakeGame;
 
 Snake::Snake(): dir(LEFT), alive(true), bodySize(3) {
     // center the Snake vertically in the middle of the screen
-    wxPoint point((640 / 2) - BLOCK_SIZE, (480 / 2) - (2 * BLOCK_SIZE));
+    wxPoint point((PANEL_WIDTH / 2) - BLOCK_SIZE, (PANEL_HEIGHT / 2) - (2 * BLOCK_SIZE));
 
     for (int i = 0; i < 4; i++) {
         body.push_back(point);

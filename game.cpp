@@ -38,7 +38,7 @@ void Game::end() {
 void Game::start() {
     // end the current Game
     end();
-    timer->Start(500);
+    timer->Start(t);
     snake = new Snake();
     // now we are playing
     moveApple();
@@ -61,7 +61,7 @@ void Game::togglePause() {
     }
     else {
         // (re)start the timer
-        timer->Start(-1);
+        timer->Start(t);
     }
 }
 void Game::moveApple() {

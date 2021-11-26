@@ -183,33 +183,73 @@ void GamePanel::drawApple(wxDC &dc) {
     dc.DrawCircle(apple.x,apple.y, radius);
 }
 void GamePanel::onKeyDown(wxKeyEvent& event) {
-    switch (event.m_keyCode) {
-    case WXK_PAUSE:
+    //switch (event.m_keyCode) {
+    //case WXK_PAUSE:
+    //    // (un)pause the game
+    //    game.togglePause();
+    //    break;
+    //case WXK_UP:
+    //    // up arrow = up
+    //    if (game.getSnake().getDirection() != DOWN) {
+    //        game.changeDirection(UP);
+    //    }
+
+    //    break;
+    //case WXK_RIGHT:
+    //    // right arrow = right
+    //    if (game.getSnake().getDirection() != LEFT) {
+    //        game.changeDirection(RIGHT);
+    //    }
+
+    //    break;
+    //case WXK_DOWN:
+    //    // down arrow = down
+    //    if (game.getSnake().getDirection() != UP) {
+    //        game.changeDirection(DOWN);
+    //    }
+
+    //    break;
+    //case WXK_LEFT:
+    //    // left arrow = left
+    //    if (game.getSnake().getDirection() != RIGHT) {
+    //        game.changeDirection(LEFT);
+    //    }
+
+    //    break;
+    //default:
+    //    // allow other handlers to process KEY_DOWN events
+    //    event.Skip();
+    //    break;
+    //}
+
+    if (event.m_keyCode == WXK_PAUSE) {
         // (un)pause the game
         game.togglePause();
-        break;
-    case WXK_UP:
+        return;
+    }
+    switch(event.GetUnicodeKey()){
+    case 'I':
         // up arrow = up
         if (game.getSnake().getDirection() != DOWN) {
             game.changeDirection(UP);
         }
 
         break;
-    case WXK_RIGHT:
+    case 'L':
         // right arrow = right
         if (game.getSnake().getDirection() != LEFT) {
             game.changeDirection(RIGHT);
         }
 
         break;
-    case WXK_DOWN:
+    case 'K':
         // down arrow = down
         if (game.getSnake().getDirection() != UP) {
             game.changeDirection(DOWN);
         }
 
         break;
-    case WXK_LEFT:
+    case 'J':
         // left arrow = left
         if (game.getSnake().getDirection() != RIGHT) {
             game.changeDirection(LEFT);
@@ -222,3 +262,4 @@ void GamePanel::onKeyDown(wxKeyEvent& event) {
         break;
     }
 }
+

@@ -9,8 +9,9 @@
     };
 
     /// The size of a block
-    const int BLOCK_SIZE = 16;
-    const int PANEL_WIDTH = 640;
-    const int PANEL_HEIGHT = 480;
+    const int BLOCK_SIZE = 32;
+    const int PANEL_WIDTH = 1280;
+    const int PANEL_HEIGHT = 960;
+    const int t = 250;
     
 #endif
