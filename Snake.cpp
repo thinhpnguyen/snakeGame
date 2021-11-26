@@ -132,7 +132,7 @@ void GamePanel::onPaint(wxPaintEvent&) {
     wxBufferedPaintDC dc(this);
 
     // clear the background
-    dc.SetBackground(*wxGREY_BRUSH);
+    dc.SetBackground(*wxBLACK_BRUSH);
     dc.Clear();
 
     if (game.isPlaying()) {
