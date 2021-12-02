@@ -10,7 +10,7 @@ using namespace SnakeGame;
 
 
 Game::Game(GamePanel & panel) : snake(NULL), panel(panel),
-playing(false), paused(true), score(0) {
+playing(false), paused(false), score(0) {
     // create the game Timer
     timer = new Timer(*this);
 }
@@ -56,11 +56,11 @@ void Game::togglePause() {
     paused = !paused;
 
     if (paused) {
-        // stop the timer
+         //stop the timer
         timer->Stop();
     }
     else {
-        // (re)start the timer
+         //(re)start the timer
         timer->Start(t);
     }
 }
@@ -104,25 +104,25 @@ bool Game::isOccupied(const wxPoint &point, bool checkHead) const {
     return false;
 }
 void Game::tick() {
-    // move the Snake
-    snake->move();
+        // move the Snake
+        snake->move();
 
-    // did the snake crash?
-    if (isOccupied(snake->getBody()[0])) {
-        snake->setALive(false);
-    }
+        // did the snake crash?
+        if (isOccupied(snake->getBody()[0])) {
+            snake->setALive(false);
+        }
 
-    // did the snake eat the apple?
-    if (snake->getBody()[0] == apple) {
-        // randomize the apple position
-        moveApple();
+        // did the snake eat the apple?
+        if (snake->getBody()[0] == apple) {
+            // randomize the apple position
+            moveApple();
 
-        // grow the snake
-        snake->addSegment(1);
-        score++;
-    }
+            // grow the snake
+            snake->addSegment(1);
+            score++;
+        }
 
-    // refresh the panel
-    panel.Refresh();
+        // refresh the panel
+        panel.Refresh();
 }
 

@@ -40,7 +40,7 @@ namespace SnakeGame {
         wxSimplebook* book;
         wxStaticText* gameTitle;
         wxButton* start;
-        wxButton* leaderBoard;
+        //wxButton* leaderBoard;
         wxButton* quit;
         GamePanel* gameScreen;
         void OnHello(wxCommandEvent& event);

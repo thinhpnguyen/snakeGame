@@ -81,14 +81,14 @@ GameFrame::GameFrame()
     gameTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Sans Serif")));
 
     start = new wxButton(panel, ID_Start_Button, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
-    leaderBoard = new wxButton(panel, wxID_ANY, wxT("Leader Board"), wxDefaultPosition, wxDefaultSize, 0);
+    //leaderBoard = new wxButton(panel, wxID_ANY, wxT("Leader Board"), wxDefaultPosition, wxDefaultSize, 0);
     quit = new wxButton(panel, wxID_ANY, wxT("Quit"), wxDefaultPosition, wxDefaultSize, 0);
     welcomeScreenSizer->AddSpacer(200);
     welcomeScreenSizer->Add(gameTitle, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(start, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
-    welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
+    //welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
     
@@ -152,7 +152,6 @@ void GamePanel::onPaint(wxPaintEvent&) {
 }
 
 void GamePanel::newGame() {
-    // start a 'novice' difficulty level game
     game.start();
 
     // refresh the screen
@@ -231,7 +230,7 @@ void GamePanel::onKeyDown(wxKeyEvent& event) {
     //    break;
     //}
 
-    if (event.m_keyCode == WXK_PAUSE) {
+    if (event.m_keyCode == WXK_SPACE) {
         // (un)pause the game
         game.togglePause();
         return;
