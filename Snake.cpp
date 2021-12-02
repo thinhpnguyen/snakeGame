@@ -19,7 +19,7 @@ public:
 
 enum
 {
-    ID_Hello,
+    ID_Back,
     ID_Start_Button
 };
 
@@ -53,7 +53,7 @@ GameFrame::GameFrame()
     // set background color
     this->SetBackgroundColour(wxColour( 67, 112, 115));
     wxMenu* menuFile = new wxMenu;
-    menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
+    menuFile->Append(ID_Back, "&Back...\tCtrl-H",
         "Help string shown in status bar for this menu item");
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
@@ -65,38 +65,38 @@ GameFrame::GameFrame()
     SetMenuBar(menuBar);
     CreateStatusBar();
     SetStatusText("Welcome!");
-    Bind(wxEVT_MENU, &GameFrame::OnHello, this, ID_Hello);
+    Bind(wxEVT_MENU, &GameFrame::OnBack, this, ID_Back);
     Bind(wxEVT_MENU, &GameFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &GameFrame::OnExit, this, wxID_EXIT);
 
 
     //Welcome page
     book = new wxSimplebook(this, wxID_ANY);
-    wxPanel* panel = new wxPanel(book, wxID_ANY);
+    welcomPanel = new wxPanel(book, wxID_ANY);
     wxSizer* welcomeScreenSizer = new wxBoxSizer(wxVERTICAL);
     gameScreen = new GamePanel(book, wxID_ANY);
 
-    gameTitle = new wxStaticText(panel, wxID_ANY, wxT("Snake Game"), wxPoint(10,10), wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
+    gameTitle = new wxStaticText(welcomPanel, wxID_ANY, wxT("Snake Game"), wxPoint(10,10), wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
     gameTitle->Wrap(-1);
     gameTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Sans Serif")));
 
-    start = new wxButton(panel, ID_Start_Button, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
+    start = new wxButton(welcomPanel, ID_Start_Button, wxT("Start"), wxDefaultPosition, wxDefaultSize, 0);
     //leaderBoard = new wxButton(panel, wxID_ANY, wxT("Leader Board"), wxDefaultPosition, wxDefaultSize, 0);
-    quit = new wxButton(panel, wxID_ANY, wxT("Quit"), wxDefaultPosition, wxDefaultSize, 0);
+    quit = new wxButton(welcomPanel, wxID_ANY, wxT("Quit"), wxDefaultPosition, wxDefaultSize, 0);
     welcomeScreenSizer->AddSpacer(200);
     welcomeScreenSizer->Add(gameTitle, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(start, 0, wxALIGN_CENTER, 0);
     welcomeScreenSizer->AddSpacer(20);
     //welcomeScreenSizer->Add(leaderBoard, 0, wxALIGN_CENTER, 0);
-    welcomeScreenSizer->AddSpacer(20);
+    //welcomeScreenSizer->AddSpacer(20);
     welcomeScreenSizer->Add(quit, 0, wxALIGN_CENTER, 0);
     
-    panel->SetSizer(welcomeScreenSizer);
+    welcomPanel->SetSizer(welcomeScreenSizer);
     // connect quit button
     quit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( GameFrame::OnExit ), NULL, this );
         
-    book->ShowNewPage(panel);
+    book->ShowNewPage(welcomPanel);
 
 }
 
@@ -116,9 +116,9 @@ void GameFrame::OnAbout(wxCommandEvent& event)
     wxMessageBox("This is a wxWidgets Hello World example",
         "About Hello World", wxNO | wxYES | wxICON_INFORMATION);
 }
-void GameFrame::OnHello(wxCommandEvent& event)
+void GameFrame::OnBack(wxCommandEvent& event)
 {
-    gameScreen->newGame();
+    book->ShowNewPage(welcomPanel);
 }
 
 

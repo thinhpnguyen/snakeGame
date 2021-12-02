@@ -43,7 +43,8 @@ namespace SnakeGame {
         //wxButton* leaderBoard;
         wxButton* quit;
         GamePanel* gameScreen;
-        void OnHello(wxCommandEvent& event);
+        wxPanel* welcomPanel;
+        void OnBack(wxCommandEvent& event);
         void OnExit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);
         void OnStart(wxCommandEvent& event);
