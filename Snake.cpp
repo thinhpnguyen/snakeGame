@@ -139,7 +139,7 @@ void GamePanel::onPaint(wxPaintEvent&) {
         // draw the snake
         drawSnake(dc);
         drawApple(dc);
-        if (!game.getSnake().isAlive()){
+        if (!game.isSnakeAlive()){
         	//game.togglePause();
         	game.end();
             wxString scoreMessage;
@@ -159,7 +159,7 @@ void GamePanel::newGame() {
 }
 
 void GamePanel::drawSnake(wxDC& dc) {
-    const std::vector<wxPoint>& body = game.getSnake().getBody();
+    const std::vector<wxPoint>& body = game.getSnakeBody();
     //const wxPoint& head = game.getSnake().getHead();
 
     //draw the body
@@ -198,28 +198,28 @@ void GamePanel::onKeyDown(wxKeyEvent& event) {
     //    break;
     //case WXK_UP:
     //    // up arrow = up
-    //    if (game.getSnake().getDirection() != DOWN) {
+    //    if (game.getSnakeDirection() != DOWN) {
     //        game.changeDirection(UP);
     //    }
 
     //    break;
     //case WXK_RIGHT:
     //    // right arrow = right
-    //    if (game.getSnake().getDirection() != LEFT) {
+    //    if (game.getSnakeDirection() != LEFT) {
     //        game.changeDirection(RIGHT);
     //    }
 
     //    break;
     //case WXK_DOWN:
     //    // down arrow = down
-    //    if (game.getSnake().getDirection() != UP) {
+    //    if (game.getSnakeDirection() != UP) {
     //        game.changeDirection(DOWN);
     //    }
 
     //    break;
     //case WXK_LEFT:
     //    // left arrow = left
-    //    if (game.getSnake().getDirection() != RIGHT) {
+    //    if (game.getSnakeDirection() != RIGHT) {
     //        game.changeDirection(LEFT);
     //    }
 
@@ -238,28 +238,28 @@ void GamePanel::onKeyDown(wxKeyEvent& event) {
     switch(event.GetUnicodeKey()){
     case 'I':
         // up arrow = up
-        if (game.getSnake().getDirection() != DOWN) {
+        if ((game.getSnakeDirection() != DOWN) && game.getUpdated()){
             game.changeDirection(UP);
         }
 
         break;
     case 'L':
         // right arrow = right
-        if (game.getSnake().getDirection() != LEFT) {
+        if ((game.getSnakeDirection() != LEFT) && game.getUpdated()) {
             game.changeDirection(RIGHT);
         }
 
         break;
     case 'K':
         // down arrow = down
-        if (game.getSnake().getDirection() != UP) {
+        if ((game.getSnakeDirection() != UP) && game.getUpdated()) {
             game.changeDirection(DOWN);
         }
 
         break;
     case 'J':
         // left arrow = left
-        if (game.getSnake().getDirection() != RIGHT) {
+        if ((game.getSnakeDirection() != RIGHT) && game.getUpdated()) {
             game.changeDirection(LEFT);
         }
 

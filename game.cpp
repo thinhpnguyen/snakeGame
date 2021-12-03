@@ -5,7 +5,6 @@
 #include "Snake.h"
 #include "timer.h"
 #include "Backend.h"
-
 using namespace SnakeGame;
 
 
@@ -48,9 +47,19 @@ void Game::start() {
 
 void Game::changeDirection(enum Direction direction) {
     snake->setDirection(direction);
+    updated = false;
 }
+bool Game::isSnakeAlive() { 
+    return snake->isAlive();
+};
 
+const std::vector<wxPoint>& Game::getSnakeBody() const {
+    return snake->getBody();
+};
 
+enum Direction Game::getSnakeDirection() const {
+    return snake->getDirection();
+}
 void Game::togglePause() {
     // toggle pause value
     paused = !paused;
@@ -78,6 +87,7 @@ void Game::moveApple() {
         // otherwise we have to keep looking
     }
 }
+
 bool Game::isOccupied(const wxPoint &point, bool checkHead) const {
     int start = (checkHead ? 0 : 1);
 
@@ -124,5 +134,6 @@ void Game::tick() {
 
         // refresh the panel
         panel.Refresh();
+        updated = true;
 }
 
