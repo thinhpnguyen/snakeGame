@@ -9,15 +9,15 @@ $ cmake --version
 ```
 $ cmake -DCMAKE_BUILD_TYPE=snakeGame ./
 ```
-![image](https://user-images.githubusercontent.com/78382696/144660410-05743d0f-a077-4c5b-954c-9a099aced621.png)
+![image](https://user-images.githubusercontent.com/78382696/144660410-05743d0f-a077-4c5b-954c-9a099aced621.png)<br/>
 3. Build the project:
 ```
 $ make
 ```
-![image](https://user-images.githubusercontent.com/78382696/144660483-85a21723-a944-463b-b0c2-61852b763672.png)
+![image](https://user-images.githubusercontent.com/78382696/144660483-85a21723-a944-463b-b0c2-61852b763672.png)<br/>
 4. Run the game:
 ```
 $ ./snakeGame
 ```
-![image](https://user-images.githubusercontent.com/78382696/144660727-04fbd79e-2235-425f-80f4-7f7c56c2210b.png)
+![image](https://user-images.githubusercontent.com/78382696/144660727-04fbd79e-2235-425f-80f4-7f7c56c2210b.png)<br/>
 
