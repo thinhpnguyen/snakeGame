@@ -4,7 +4,7 @@ Unzip our project folder. At the directory which includes the project files, ope
 ```
 $ cmake --version
 ```
-![image](https://user-images.githubusercontent.com/78382696/144660118-e12c5363-583c-4f4c-bcaa-d357f5d69389.png)
+![image](https://user-images.githubusercontent.com/78382696/144660118-e12c5363-583c-4f4c-bcaa-d357f5d69389.png)<br/>
 2. Create the Makefile file:
 ```
 $ cmake -DCMAKE_BUILD_TYPE=snakeGame ./
